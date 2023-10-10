@@ -94,8 +94,15 @@ nifi.security.user.login.identity.provider=single-user-provider
 
 ## Cloudera CFM 설정
 
-|제목 셀1|제목 셀2|제목 셀3|제목 셀4|
-|---|---|---|---|
-|내용 1|내용 2|내용 3|내용 4|
-|내용 5|내용 6|내용 7|내용 8|
-|내용 9|내용 10|내용 11|내용 12|
+Cloudera CFM에서 설정하려면 Cloudera Manager > NiFi > Configuration에서 다음을 변경하도록 합니다.
+
+|설정|KEY|VALUE|
+|---|---|---|
+|NiFi Node Advanced Configuration Snippet (Safety Valve) for staging/login-identity-providers.xml|`xml.loginIdentityProviders.provider.single-user-provider.enabled`|`true`|
+||`xml.loginIdentityProviders.provider.single-user-provider.class`|`org.apache.nifi.authentication.single.user.SingleUserLoginIdentityProvider`|
+||`xml.loginIdentityProviders.provider.single-user-provider.property.Username`|`admin`|
+||`xml.loginIdentityProviders.provider.single-user-provider.property.Password`|`생성한 패스워드`|
+|Authorizer Identifier||`single-user-authorizer`|
+|Login Identity Provider ID||`single-user-provider`|
+|NiFi Node Advanced Configuration Snippet (Saftey Valve) for staging/authorizers.xml|`xml.authorizers.authorizer.single-user-authorizer.class`|`org.apache.nifi.authorization.single.user.SingleUserAuthorizer`|
+||`xml.authorizers.authorizer.single-user-authorizer.enabled`|`true`|
